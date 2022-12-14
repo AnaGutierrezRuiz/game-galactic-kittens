@@ -1,0 +1,22 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(194, 156, 240, 0.494);
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: white;
+}
+
+canvas {
+  border: 2px solid white;
+  border-radius: 5px;
+  display: none;
+}
