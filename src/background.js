@@ -10,8 +10,6 @@ class Background {
   
     this.img = new Image()
     this.img.src = "../resources/img/background2.png"
-    // Line 14 I try with an url to check if the local image in line 13 is the issue here. It is not, remains unsolved
-    // this.img.src = "https://www.vbforums.com/attachment.php?attachmentid=113103&d=1398112502"
   }
 
   draw() {

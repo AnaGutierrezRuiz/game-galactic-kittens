@@ -3,14 +3,26 @@ class Game {
     this.ctx = ctx
     this.interval = null
     this.background = new Background(ctx)
+    this.spaceship = new Spaceship(ctx)
   }
 
   start() {
     this.interval = setInterval(() => {
       this.clear()
+      this.initListeners()
       this.draw()
       this.move()
     }, 1000 / 60)
+  }
+
+  initListeners() {
+    document.onkeydown = (e) => {
+      this.spaceship.onKeyDown(e.keyCode)
+    }
+
+    document.onkeyup = (e) => {
+      this.spaceship.onKeyUp(e.keyCode)
+    }
   }
 
   clear() {
@@ -24,10 +36,12 @@ class Game {
 
   draw() {
     this.background.draw()
+    this.spaceship.draw()
   }
 
   move() {
   this.background.move()
+  this.spaceship.move()
   }
 
   stop() {
