@@ -17,8 +17,8 @@ class Spaceship {
       this.img,
       this.x,
       this.y,
-      this.img.width / 8,
-      this.img.height / 8
+      this.img.width / 7,
+      this.img.height / 7
     )
   }
 

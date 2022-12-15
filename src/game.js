@@ -4,6 +4,7 @@ class Game {
     this.interval = null
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
+    this.kitten = new Kitten(ctx)
   }
 
   start() {
@@ -37,11 +38,14 @@ class Game {
   draw() {
     this.background.draw()
     this.spaceship.draw()
+    this.kitten.draw()
+
   }
 
   move() {
   this.background.move()
   this.spaceship.move()
+  this.kitten.move()
   }
 
   stop() {
