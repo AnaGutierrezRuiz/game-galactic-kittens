@@ -12,6 +12,7 @@ class Game {
       this.clear()
       this.initListeners()
       this.draw()
+      this.checkCollisions()
       this.move()
     }, 1000 / 60)
   }
@@ -48,7 +49,20 @@ class Game {
   this.kitten.move()
   }
 
+  checkCollisions() {
+    const colX = ((this.spaceship.x + this.spaceship.w) >= this.kitten.x) && (this.spaceship.x <= (this.kitten.x + this.kitten.w))
+    const colY = (this.spaceship.y <= (this.kitten.y + this.kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= this.kitten.y)
+    if (colX && colY) {
+      this.gameOver()
+    }  
+  }
+
+
   stop() {
     clearInterval(this.interval)
+  }
+
+  gameOver() {
+    this.stop()
   }
 }

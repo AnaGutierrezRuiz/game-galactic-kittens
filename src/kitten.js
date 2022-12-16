@@ -1,12 +1,12 @@
 class Kitten {
   constructor(ctx) {
     this.ctx = ctx
-    this.x = 100
-    this.y = 100
-    this.w = 100
+    this.x = 90
+    this.y = -150
+    this.w = 200
     this.h= 100
     this.vx= 0
-    this.vy = 0
+    this.vy = 2
     
     this.img = new Image()
     this.img.src = "../resources/img/kittens.png"
@@ -25,7 +25,10 @@ class Kitten {
     move() {
       this.x += this.vx
       this.y += this.vy 
-  
+
+      if (this.y >= this.ctx.canvas.height + 10) {
+        this.y = -100
+      }
     }
 
   }

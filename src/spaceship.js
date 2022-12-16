@@ -3,8 +3,8 @@ class Spaceship {
     this.ctx = ctx
     this.x = 160
     this.y = 500
-    this.w = 60
-    this.h = 60
+    this.w = 70
+    this.h = 80
     this.vx = 0
     this.vy = 0
     
@@ -32,7 +32,7 @@ class Spaceship {
     }
 
     if(this.y + this.h >= this.ctx.canvas.height) {
-      this.vy = this.ctx.canvas.height
+      this.h = this.ctx.canvas.height
       this.vy = 0
     }
 
