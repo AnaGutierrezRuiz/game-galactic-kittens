@@ -10,6 +10,8 @@ class Spaceship {
     
     this.img = new Image()
     this.img.src = "../resources/img/spaceship1.png"
+
+    this.weapon = new Weapon(this)
   }
 
   draw() {
@@ -20,6 +22,7 @@ class Spaceship {
       this.img.width / 7,
       this.img.height / 7
     )
+    this.weapon.draw()
   }
 
   move() {
@@ -45,6 +48,7 @@ class Spaceship {
       this.x = this.ctx.canvas.width - this.w
       this.vx = 0
     }
+    this.weapon.move()
   }
 
   onKeyDown(key) {
@@ -60,6 +64,9 @@ class Spaceship {
         break
       case DOWN: 
         this.vy = 3
+        break
+      case SPACE:
+        this.weapon.shoot()
         break
     }
   }

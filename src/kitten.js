@@ -35,9 +35,9 @@ class Kitten {
       this.x += this.vx
       this.y += this.vy 
 
-      if (this.y >= this.ctx.canvas.height + 10) {
-        this.y = -100
-      }
+      // if (this.y >= this.ctx.canvas.height + 10) {
+      //   this.y = -100
+      // }
     }
   
 
