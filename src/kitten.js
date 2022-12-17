@@ -1,24 +1,33 @@
 class Kitten {
   constructor(ctx) {
     this.ctx = ctx
-    this.x = 90
+    this.w = 50
+    this.x = Math.floor(Math.random() * (canvas.width - this.w))
     this.y = -150
-    this.w = 200
-    this.h= 100
+    this.h= 50
     this.vx= 0
     this.vy = 2
     
     this.img = new Image()
-    this.img.src = "../resources/img/kittens.png"
+    this.img.src = "../resources/img/kittensedited.png"
+    this.img.frames = 7
+    this.img.frameIndex = Math.floor(Math.random() * 7)
+    this.tick = 0
     }
 
     draw() {
+      //this.ctx.strokeRect(this.x, this.y, this.w, this.h)
       this.ctx.drawImage(
         this.img,
+        this.img.frameIndex * this.img.width / this.img.frames,
+        0,
+        this.img.width / this.img.frames,
+        this.img.height,
         this.x,
         this.y,
-        this.img.width / 2,
-        this.img.height / 2
+        this.w,
+        this.h
+
       )
     }
   
@@ -30,5 +39,12 @@ class Kitten {
         this.y = -100
       }
     }
+  
 
+    isVisible() {
+      return (
+        this.y < this.ctx.canvas.height &&
+        this.y > 0 - this.ctx.canvas.height
+      )
+    }
   }

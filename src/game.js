@@ -2,9 +2,10 @@ class Game {
   constructor(ctx) {
     this.ctx = ctx
     this.interval = null
+    this.tick = 0
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
-    this.kitten = new Kitten(ctx)
+    this.kittens = []
   }
 
   start() {
@@ -14,6 +15,12 @@ class Game {
       this.draw()
       this.checkCollisions()
       this.move()
+      this.addKitten()
+      this.clearKittens()
+
+      if (this.tick++ > 10000) {
+        this.tick = 0
+      }
     }, 1000 / 60)
   }
 
@@ -39,24 +46,34 @@ class Game {
   draw() {
     this.background.draw()
     this.spaceship.draw()
-    this.kitten.draw()
-
+    this.kittens.forEach(kitten => kitten.draw())
   }
 
   move() {
   this.background.move()
   this.spaceship.move()
-  this.kitten.move()
+  this.kittens.forEach(kitten => kitten.move())
   }
 
   checkCollisions() {
-    const colX = ((this.spaceship.x + this.spaceship.w) >= this.kitten.x) && (this.spaceship.x <= (this.kitten.x + this.kitten.w))
-    const colY = (this.spaceship.y <= (this.kitten.y + this.kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= this.kitten.y)
-    if (colX && colY) {
+      const collisions = this.kittens.some(kitten => {
+        const colX = ((this.spaceship.x + this.spaceship.w) >= kitten.x) && (this.spaceship.x <= (kitten.x + kitten.w))
+        const colY = (this.spaceship.y <= (kitten.y + kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= kitten.y)
+        return colX && colY
+       })
+    if (collisions) {
       this.gameOver()
-    }  
+    }
   }
 
+  clearKittens() {
+    this.kittens = this.kittens.filter(kitten => kitten.isVisible())
+  }
+
+  addKitten() {
+    if (this.tick % 100) return 
+    this.kittens.push(new Kitten(this.ctx))
+  }
 
   stop() {
     clearInterval(this.interval)
