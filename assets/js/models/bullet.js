@@ -4,26 +4,28 @@ class Bullet {
     this.x = x
     this.y = y
     this.vx = 0
-    this.vy = 2
+    this.vy = -2
 
   this.img = new Image()
   this.img.src = "assets/resources/images/bullet1.png"
   }
 
   draw() {
-    this.img,
-    0,
-    0,
-    this.img.width,
-    this.img.height,
-    this.x,
-    this.y,
-    this.w,
-    this.h
+    // this.img,
+    // 0,
+    // 0,
+    // this.img.width,
+    // this.img.height,
+    // this.x,
+    // this.y,
+    // this.w,
+    // this.h
+    this.ctx.fillRect(this.x, this.y, 5, 5)
   }
 
   move() {
     this.y += this.vy
+    this.x += this.vx
   }
 
   isVisibile() {

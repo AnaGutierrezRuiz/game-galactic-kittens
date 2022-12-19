@@ -16,7 +16,6 @@ class Kitten {
     }
 
     draw() {
-      //this.ctx.strokeRect(this.x, this.y, this.w, this.h)
       this.ctx.imageSmoothingEnabled = false
       this.ctx.drawImage(
         this.img,
@@ -35,10 +34,6 @@ class Kitten {
     move() {
       this.x += this.vx
       this.y += this.vy 
-
-      // if (this.y >= this.ctx.canvas.height + 10) {
-      //   this.y = -100
-      // }
     }
   
 

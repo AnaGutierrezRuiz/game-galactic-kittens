@@ -11,7 +11,7 @@ class Spaceship {
     this.img = new Image()
     this.img.src = "assets/resources/images/spaceship1.png"
 
-    this.weapon = new Weapon(this)
+    this.bullets = []
   }
 
   draw() {
@@ -22,7 +22,7 @@ class Spaceship {
       this.img.width / 7,
       this.img.height / 7
     )
-    this.weapon.draw()
+    this.bullets.forEach(bullet => bullet.draw())
   }
 
   move() {
@@ -48,7 +48,14 @@ class Spaceship {
       this.x = this.ctx.canvas.width - this.w
       this.vx = 0
     }
-    this.weapon.move()
+    this.bullets.forEach(bullet => bullet.move())
+  }
+
+  shoot() {
+    const x = this.x + this.w / 2
+    const y = this.y - 5
+    const bullet = new Bullet(this.ctx, x, y)
+    this.bullets.push(bullet)
   }
 
   onKeyDown(key) {
@@ -59,14 +66,14 @@ class Spaceship {
       case LEFT: 
         this.vx = -3
         break
-      case UP: 
-        this.vy = -3
-        break
-      case DOWN: 
-        this.vy = 3
-        break
+      // case UP: 
+      //   this.vy = -3
+      //   break
+      // case DOWN: 
+      //   this.vy = 3
+      //   break
       case SPACE:
-        this.weapon.shoot()
+        this.shoot()
         break
     }
   }
@@ -77,10 +84,10 @@ class Spaceship {
       case LEFT:
         this.vx = 0
         break
-      case UP:
-      case DOWN:
-        this.vy = 0
-        break
+      // case UP:
+      // case DOWN:
+      //   this.vy = 0
+      //   break
     }
   }
 }

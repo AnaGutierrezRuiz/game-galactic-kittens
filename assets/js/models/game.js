@@ -6,7 +6,6 @@ class Game {
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
     this.kittens = []
-    this.bullets = []
   }
 
   start() {
