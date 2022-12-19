@@ -9,7 +9,7 @@ class Background {
     this.vy = 1
   
     this.img = new Image()
-    this.img.src = "../resources/img/background2.png"
+    this.img.src = "assets/resources/images/background2.png"
   }
 
   draw() {

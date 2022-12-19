@@ -9,7 +9,7 @@ class Kitten {
     this.vy = 2
     
     this.img = new Image()
-    this.img.src = "../resources/img/kittensedited.png"
+    this.img.src = "assets/resources/images/kittensedited.png"
     this.img.frames = 7
     this.img.frameIndex = Math.floor(Math.random() * 7)
     this.tick = 0
@@ -17,6 +17,7 @@ class Kitten {
 
     draw() {
       //this.ctx.strokeRect(this.x, this.y, this.w, this.h)
+      this.ctx.imageSmoothingEnabled = false
       this.ctx.drawImage(
         this.img,
         this.img.frameIndex * this.img.width / this.img.frames,

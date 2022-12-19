@@ -9,7 +9,7 @@ class Spaceship {
     this.vy = 0
     
     this.img = new Image()
-    this.img.src = "../resources/img/spaceship1.png"
+    this.img.src = "assets/resources/images/spaceship1.png"
 
     this.weapon = new Weapon(this)
   }

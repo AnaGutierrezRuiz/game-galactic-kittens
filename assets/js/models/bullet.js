@@ -7,7 +7,7 @@ class Bullet {
     this.vy = 2
 
   this.img = new Image()
-  this.img.src = "../resources/img/bullet1.png"
+  this.img.src = "assets/resources/images/bullet1.png"
   }
 
   draw() {
