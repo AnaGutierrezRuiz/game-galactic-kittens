@@ -36,6 +36,14 @@ class Kitten {
       this.y += this.vy 
     }
   
+    collidesWith(bullet) {
+      return (
+        (bullet.x + bullet.w) >= this.x && 
+        bullet.x <= (this.x + this.w) &&
+        bullet.y <= (this.y + this.h) && 
+        (bullet.y + bullet.h) >= this.y
+      )
+    }
 
     isVisible() {
       return (

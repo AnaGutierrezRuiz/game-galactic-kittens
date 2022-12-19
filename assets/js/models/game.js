@@ -13,10 +13,12 @@ class Game {
       this.clear()
       this.initListeners()
       this.draw()
-      this.checkCollisions()
+      this.checkShipCollisions()
+      this.checkBulletsCollisions()
       this.move()
       this.addKitten()
       this.clearKittens()
+      this.clearBullets()
 
       if (this.tick++ > 10000) {
         this.tick = 0
@@ -55,7 +57,7 @@ class Game {
   this.kittens.forEach(kitten => kitten.move())
   }
 
-  checkCollisions() {
+  checkShipCollisions() {
       const collisions = this.kittens.some(kitten => {
         const colX = ((this.spaceship.x + this.spaceship.w) >= kitten.x) && (this.spaceship.x <= (kitten.x + kitten.w))
         const colY = (this.spaceship.y <= (kitten.y + kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= kitten.y)
@@ -65,9 +67,31 @@ class Game {
       this.gameOver()
     }
   }
+//why cant i check both kittens and bullets arrays from here ( i ended up creating a method withing the kitten class)
+  checkBulletsCollisions() {
+    this.spaceship.bullets.forEach(bullet => {
+      this.kittens.forEach(kitten => {
+        if (kitten.collidesWith(bullet)){
+          this.clearCollidedBulletAndKitten(kitten, bullet)
+        }
+      })
+    })
+  }
 
   clearKittens() {
     this.kittens = this.kittens.filter(kitten => kitten.isVisible())
+  }
+
+  clearBullets() {
+    this.spaceship.bullets = this.spaceship.bullets.filter(bullet => bullet.isVisible())
+  }
+  
+  clearCollidedBulletAndKitten(kitten, bullet) {
+    const kittenIndex = this.kittens.indexOf(kitten)
+    this.kittens.splice(kittenIndex, 1)
+
+    const bulletIndex = this.spaceship.bullets.indexOf(bullet)
+    this.spaceship.bullets.splice(bulletIndex, 1)
   }
 
   addKitten() {

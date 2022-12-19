@@ -53,10 +53,12 @@ class Spaceship {
 
   shoot() {
     const x = this.x + this.w / 2
-    const y = this.y - 5
+    const y = this.y
     const bullet = new Bullet(this.ctx, x, y)
     this.bullets.push(bullet)
   }
+
+  
 
   onKeyDown(key) {
     switch(key) {

@@ -3,6 +3,8 @@ class Bullet {
     this.ctx = ctx
     this.x = x
     this.y = y
+    this.w = 5
+    this.h = 5
     this.vx = 0
     this.vy = -2
 
@@ -20,7 +22,8 @@ class Bullet {
     // this.y,
     // this.w,
     // this.h
-    this.ctx.fillRect(this.x, this.y, 5, 5)
+    this.ctx.fillStyle = "#461a70"
+    this.ctx.fillRect(this.x, this.y, this.w, this.h)
   }
 
   move() {
@@ -28,7 +31,7 @@ class Bullet {
     this.x += this.vx
   }
 
-  isVisibile() {
+  isVisible() {
     return (
       this.y > 0  && 
       this.y < this.ctx.canvas.height
