@@ -7,6 +7,7 @@ class Game {
     this.spaceship = new Spaceship(ctx)
     this.kittens = []
     this.audio = new Audio("assets/resources/sounds/game-music1.mp3")
+    this.audio.volume = 0.5
   }
 
   start() {

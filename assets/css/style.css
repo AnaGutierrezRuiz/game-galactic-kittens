@@ -29,3 +29,11 @@ canvas {
 .galactic-kittens2 {
   width: 600px;
 }
+
+.music-button {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 20px;
+  border: 1px solid purple;
+}
