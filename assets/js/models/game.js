@@ -6,12 +6,14 @@ class Game {
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
     this.kittens = []
+    this.audio = new Audio("assets/resources/sounds/game-music1.mp3")
   }
 
   start() {
     this.interval = setInterval(() => {
       this.clear()
       this.initListeners()
+      this.audio.play()
       this.draw()
       this.checkShipCollisions()
       this.checkBulletsCollisions()
