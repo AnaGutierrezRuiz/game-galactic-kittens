@@ -54,6 +54,7 @@ class Game {
     this.background.draw()
     this.spaceship.draw()
     this.kittens.forEach(kitten => kitten.draw())
+    this.drawScore()
   }
 
   move() {
@@ -99,13 +100,20 @@ class Game {
     this.spaceship.bullets.splice(bulletIndex, 1)
 
     this.meowSound.play()
+
   }
+
 
   addKitten() {
     if (this.tick % 100) return 
     this.kittens.push(new Kitten(this.ctx))
   }
 
+  drawScore() {
+    this.ctx.font = "bolder 20px sans-serif"
+    //this.ctx.strokeText("Score: ", 30, 30, 70, 80)
+    this.ctx.fillText("Score", 30, 30, 70, 80 )
+  }
   stop() {
     clearInterval(this.interval)
   }
