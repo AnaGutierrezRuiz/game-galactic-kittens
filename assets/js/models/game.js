@@ -9,6 +9,7 @@ class Game {
     this.music = new Audio("assets/resources/sounds/game-music1.mp3")
     this.music.volume = 0.5
     this.meowSound = new Audio("assets/resources/sounds/meow.mp3") 
+    this.meowSound.volume = 0.5
   }
 
   start() {
