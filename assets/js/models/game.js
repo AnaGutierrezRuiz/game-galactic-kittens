@@ -6,15 +6,16 @@ class Game {
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
     this.kittens = []
-    this.audio = new Audio("assets/resources/sounds/game-music1.mp3")
-    this.audio.volume = 0.5
+    this.music = new Audio("assets/resources/sounds/game-music1.mp3")
+    this.music.volume = 0.5
+    this.meowSound = new Audio("assets/resources/sounds/meow.mp3") 
   }
 
   start() {
     this.interval = setInterval(() => {
       this.clear()
       this.initListeners()
-      this.audio.play()
+      this.music.play()
       this.draw()
       this.checkShipCollisions()
       this.checkBulletsCollisions()
@@ -95,6 +96,8 @@ class Game {
 
     const bulletIndex = this.spaceship.bullets.indexOf(bullet)
     this.spaceship.bullets.splice(bulletIndex, 1)
+
+    this.meowSound.play()
   }
 
   addKitten() {
