@@ -12,14 +12,17 @@ html, body {
 }
 
 .container {
-  text-align: center;
-  padding: 20px;
+  /* text-align: center;
+  padding: 20px; */
+  display: flex;
+  align-items: flex-end;
 }
 
 
 canvas {
   border: 3px solid white;
   border-radius: 15px;
+  margin: 20px;
 }
 
 .game-intro {
@@ -30,10 +33,19 @@ canvas {
   width: 600px;
 }
 
-.music-button {
-  color: black;
-  padding: 10px;
-  text-decoration: none;
-  border-radius: 20px;
-  border: 1px solid purple;
+.music-on-off {
+  width: 40px;
+  height: 40px;
+  background-image: url("/assets/resources/images/music-off.png");
+  background-size: cover;
+  margin-bottom: 40px;
+}
+
+/* .music-on-off img {
+  width: 100%;
+  height: 100%;
+} */
+
+.on {
+  background-image: url("/assets/resources/images/music-on.png");
 }
