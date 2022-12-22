@@ -12,6 +12,9 @@ class Game {
     
     this.meowSound = new Audio("assets/resources/sounds/meow.mp3") 
     this.meowSound.volume = 0.5
+
+    this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav")
+    this.levelUpSound.volume = 1
     
     this.score = 0
     this.level = 1
@@ -110,8 +113,9 @@ class Game {
     this.increaseScore()
     //Level is increased after 10 kittens destroyed. With each level kittens velocity is increased by 1. 
     if (this.score % 10 === 0) {
+      this.levelUpSound.play()
       this.level++
-      this.kittens.forEach(kitten => kitten.vy + 1)
+      this.kitten.vy++ 
 
     }
 
