@@ -52,7 +52,7 @@ class Kitten {
     isVisible() {
       return (
         this.y < this.ctx.canvas.height &&
-        this.y > 0 - this.ctx.canvas.height
+        this.y > 0 - (this.ctx.canvas.height + 100)
       )
     }
   }

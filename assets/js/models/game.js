@@ -5,6 +5,7 @@ class Game {
     this.tick = 0
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
+    this.life = new Life(ctx)
     this.kittens = []
 
     this.music = new Audio("assets/resources/sounds/game-music1.mp3")
@@ -35,6 +36,7 @@ class Game {
       this.addKitten()
       this.clearKittens()
       this.clearBullets()
+      this.loseLife()
 
       if (this.tick++ > 10000) {
         this.tick = 0
@@ -64,6 +66,7 @@ class Game {
   draw() {
     this.background.draw()
     this.spaceship.draw()
+    this.life.draw()
     this.kittens.forEach(kitten => kitten.draw())
     this.drawScore()
     this.drawLevel()
@@ -94,6 +97,27 @@ class Game {
         }
       })
     })
+  }
+
+  loseLife() {
+    this.kittens.forEach(kitten => {
+      if (kitten.y >= 550) {
+        this.life.img.frameIndex = 1
+        let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
+        if (musicButton.classList.contains("on")) {
+          lifeDownSound.volume = 0.1
+          lifeDownSound.play() 
+      }
+      }
+      if (this.life.img.frameIndex === 3) {
+        this.gameOver();
+      }
+    })
+    // setTimeout(() => {
+    //   if (this.life.img.frameIndex === 4) {
+    //     this.gameOver()
+    //   }  
+    // }, )
   }
 
   clearKittens() {
@@ -167,12 +191,21 @@ class Game {
 
       this.ctx.font = "bolder 30px sans-serif"
       this.ctx.textAlign = "center"
+      this.ctx.fillStyle = "#FFA7E4"
       this.ctx.fillText(
         `Final Score: ${this.score}`, 
         (this.ctx.canvas.width / 2), 
-        450 , 
+        450, 
         170, 
         80
-        )  
+        )
+      this.ctx.fillStyle = "#5BE1E6"
+      this.ctx.fillText(
+          `Level: ${this.level}`, 
+          (this.ctx.canvas.width / 2), 
+          480, 
+          170, 
+          80
+          )    
   }
 }
