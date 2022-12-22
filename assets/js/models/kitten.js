@@ -45,6 +45,10 @@ class Kitten {
       )
     }
 
+    increaseKittensSpeed() {
+      this.vy++
+    }
+
     isVisible() {
       return (
         this.y < this.ctx.canvas.height &&

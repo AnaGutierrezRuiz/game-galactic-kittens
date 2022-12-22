@@ -11,8 +11,8 @@ class Spaceship {
     this.img = new Image()
     this.img.src = "assets/resources/images/spaceship1.png"
 
-    this.shootSound = new Audio("assets/resources/sounds/shoot.mp3")
-    this.shootSound.volume = 0.3
+    // this.shootSound = new Audio("assets/resources/sounds/shoot.mp3")
+    // this.shootSound.volume = 0.3
 
     this.bullets = []
   }
@@ -59,7 +59,14 @@ class Spaceship {
     const y = this.y
     const bullet = new Bullet(this.ctx, x, y)
     this.bullets.push(bullet)
-    this.shootSound.play()
+    
+    //play shooting sound only if sound is on
+    const musicBotomState = document.getElementById("music-on-off")
+    if (musicButton.classList.contains("on")) {
+      const shootSound = new Audio("assets/resources/sounds/shoot.mp3")
+      shootSound.volume = 0.1
+      shootSound.play()
+    } 
   }
 
   

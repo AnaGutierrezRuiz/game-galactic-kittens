@@ -115,8 +115,7 @@ class Game {
     if (this.score % 10 === 0) {
       this.levelUpSound.play()
       this.level++
-      this.kitten.vy++ 
-
+      this.kittens.forEach(kitten => kitten.increaseKittensSpeed())
     }
 
   }
