@@ -164,5 +164,15 @@ class Game {
         this.ctx.canvas.width,
         this.ctx.canvas.height
       )
+
+      this.ctx.font = "bolder 30px sans-serif"
+      this.ctx.textAlign = "center"
+      this.ctx.fillText(
+        `Final Score: ${this.score}`, 
+        (this.ctx.canvas.width / 2), 
+        450 , 
+        170, 
+        80
+        )  
   }
 }
