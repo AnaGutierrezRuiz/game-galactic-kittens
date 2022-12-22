@@ -6,10 +6,15 @@ class Game {
     this.background = new Background(ctx)
     this.spaceship = new Spaceship(ctx)
     this.kittens = []
+
     this.music = new Audio("assets/resources/sounds/game-music1.mp3")
     this.music.volume = 0.5
+    
     this.meowSound = new Audio("assets/resources/sounds/meow.mp3") 
     this.meowSound.volume = 0.5
+    
+    this.score = 0
+    this.level = 1
   }
 
   start() {
@@ -55,6 +60,7 @@ class Game {
     this.spaceship.draw()
     this.kittens.forEach(kitten => kitten.draw())
     this.drawScore()
+    this.drawLevel()
   }
 
   move() {
@@ -78,7 +84,7 @@ class Game {
     this.spaceship.bullets.forEach(bullet => {
       this.kittens.forEach(kitten => {
         if (kitten.collidesWith(bullet)){
-          this.clearCollidedBulletAndKitten(kitten, bullet)
+          this.bulletCollidesWithKitten(kitten, bullet)
         }
       })
     })
@@ -92,7 +98,7 @@ class Game {
     this.spaceship.bullets = this.spaceship.bullets.filter(bullet => bullet.isVisible())
   }
   
-  clearCollidedBulletAndKitten(kitten, bullet) {
+  bulletCollidesWithKitten(kitten, bullet) {
     const kittenIndex = this.kittens.indexOf(kitten)
     this.kittens.splice(kittenIndex, 1)
 
@@ -100,9 +106,20 @@ class Game {
     this.spaceship.bullets.splice(bulletIndex, 1)
 
     this.meowSound.play()
+    //Score is increased with every kitten destroyed
+    this.increaseScore()
+    //Level is increased after 10 kittens destroyed. With each level kittens velocity is increased by 1. 
+    if (this.score % 10 === 0) {
+      this.level++
+      this.kittens.forEach(kitten => kitten.vy + 1)
+
+    }
 
   }
 
+  increaseScore() {
+    this.score++
+  }
 
   addKitten() {
     if (this.tick % 100) return 
@@ -110,10 +127,19 @@ class Game {
   }
 
   drawScore() {
-    this.ctx.font = "bolder 20px sans-serif"
+    //this.ctx.fillStyle = "#FFA7E4" // this is the pink color of our title
+    this.ctx.fillStyle = "#5BE1E6"
+    this.ctx.font = "bolder 30px sans-serif"
+    this.ctx.shadowColor = "#FFA7E4"
     //this.ctx.strokeText("Score: ", 30, 30, 70, 80)
-    this.ctx.fillText("Score", 30, 30, 70, 80 )
+    this.ctx.fillText(`Score: ${this.score}`, 20, 40, 110, 60)
   }
+
+  drawLevel() {
+    this.ctx.fillStyle = "#FFA7E4"
+    this.ctx.fillText(`Level: ${this.level}`, 20, 70, 110, 60)
+  }
+
   stop() {
     clearInterval(this.interval)
   }
