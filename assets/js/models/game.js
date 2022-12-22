@@ -18,6 +18,9 @@ class Game {
     
     this.score = 0
     this.level = 1
+
+    this.gameOverImg = new Image
+    this.gameOverImg.src = "assets/resources/images/game-over-vertical.png"
   }
 
   start() {
@@ -144,10 +147,22 @@ class Game {
   }
 
   stop() {
-    clearInterval(this.interval)
+      clearInterval(this.interval)
   }
 
   gameOver() {
-    this.stop()
+      this.stop()
+      const gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
+      if (musicButton.classList.contains("on")) {
+        gameOverSound.play()
+      }
+
+      this.ctx.drawImage(
+        this.gameOverImg, 
+        0,
+        0,
+        this.ctx.canvas.width,
+        this.ctx.canvas.height
+      )
   }
 }

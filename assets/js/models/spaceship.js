@@ -61,7 +61,7 @@ class Spaceship {
     this.bullets.push(bullet)
     
     //play shooting sound only if sound is on
-    const musicBotomState = document.getElementById("music-on-off")
+    //const musicButtonState = document.getElementById("music-on-off")
     if (musicButton.classList.contains("on")) {
       const shootSound = new Audio("assets/resources/sounds/shoot.mp3")
       shootSound.volume = 0.1
