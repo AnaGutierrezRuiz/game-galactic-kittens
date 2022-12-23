@@ -24,9 +24,6 @@ class Bullet {
       this.w,
       this.h
     )
-   
-    // this.ctx.fillStyle = "#461a70"
-    // this.ctx.fillRect(this.x, this.y, this.w, this.h)
   }
 
   move() {

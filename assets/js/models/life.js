@@ -1,9 +1,9 @@
 class Life {
   constructor(ctx) {
     this.ctx = ctx
-    this.x = 280
+    this.x = 260
     this.y = 10
-    this.w = 100
+    this.w = 120
     this.h = 50
     
     this.img = new Image()

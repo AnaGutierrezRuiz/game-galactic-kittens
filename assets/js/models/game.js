@@ -16,6 +16,9 @@ class Game {
 
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav")
     this.levelUpSound.volume = 1
+
+    this.gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
+    this.gameOverSound.volume = 0.2
     
     this.score = 0
     this.level = 1
@@ -46,6 +49,7 @@ class Game {
 
   initListeners() {
     document.onkeydown = (e) => {
+      this.onKeyDown(e.keyCode)
       this.spaceship.onKeyDown(e.keyCode)
     }
 
@@ -85,6 +89,7 @@ class Game {
         return colX && colY
        })
     if (collisions) {
+      this.life.img.frameIndex = 3
       this.gameOver()
     }
   }
@@ -100,28 +105,29 @@ class Game {
   }
 
   loseLife() {
+    
     this.kittens.forEach(kitten => {
-      if (kitten.y >= 550) {
-        this.life.img.frameIndex = 1
+      console.log(kitten.isVisible())
+      if (!kitten.isVisible()) {
+        this.life.img.frameIndex++
         let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
         if (musicButton.classList.contains("on")) {
           lifeDownSound.volume = 0.1
           lifeDownSound.play() 
       }
       }
-      if (this.life.img.frameIndex === 3) {
-        this.gameOver();
-      }
     })
-    // setTimeout(() => {
-    //   if (this.life.img.frameIndex === 4) {
-    //     this.gameOver()
-    //   }  
-    // }, )
+    if (this.life.img.frameIndex === 3) {
+      setTimeout(() => {
+          this.gameOver()
+      }, 300)
+    }
   }
 
   clearKittens() {
+    setTimeout(() => {
     this.kittens = this.kittens.filter(kitten => kitten.isVisible())
+    }, 10)
   }
 
   clearBullets() {
@@ -138,11 +144,10 @@ class Game {
     this.meowSound.play()
     //Score is increased with every kitten destroyed
     this.increaseScore()
-    //Level is increased after 10 kittens destroyed. With each level kittens velocity is increased by 1. 
+    //Level is increased after 10 kittens destroyed.
     if (this.score % 10 === 0) {
       this.levelUpSound.play()
       this.level++
-      this.kittens.forEach(kitten => kitten.increaseKittensSpeed())
     }
 
   }
@@ -153,15 +158,17 @@ class Game {
 
   addKitten() {
     if (this.tick % 100) return 
-    this.kittens.push(new Kitten(this.ctx))
+    //for each kitten its velocity is increased depending on the level the player is at
+    //const vy = 2 + this.level * 0.3
+    const vy = 2
+    console.log(vy)
+    this.kittens.push(new Kitten(this.ctx, vy))
   }
 
   drawScore() {
-    //this.ctx.fillStyle = "#FFA7E4" // this is the pink color of our title
     this.ctx.fillStyle = "#5BE1E6"
     this.ctx.font = "bolder 30px sans-serif"
     this.ctx.shadowColor = "#FFA7E4"
-    //this.ctx.strokeText("Score: ", 30, 30, 70, 80)
     this.ctx.fillText(`Score: ${this.score}`, 20, 40, 110, 60)
   }
 
@@ -171,41 +178,51 @@ class Game {
   }
 
   stop() {
-      clearInterval(this.interval)
+    clearInterval(this.interval)
   }
 
   gameOver() {
-      this.stop()
-      const gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
-      if (musicButton.classList.contains("on")) {
-        gameOverSound.play()
-      }
+    this.stop()
+    
+    if (musicButton.classList.contains("on")) {
+      this.gameOverSound.play()
+      console.log("playing game over sound")
+      this.music.pause()
+    }
 
-      this.ctx.drawImage(
-        this.gameOverImg, 
-        0,
-        0,
-        this.ctx.canvas.width,
-        this.ctx.canvas.height
+    this.ctx.drawImage(
+      this.gameOverImg, 
+      0,
+      0,
+      this.ctx.canvas.width,
+      this.ctx.canvas.height
+    )
+
+    this.ctx.font = "bolder 30px sans-serif"
+    this.ctx.textAlign = "center"
+    this.ctx.fillStyle = "#FFA7E4"
+    this.ctx.fillText(
+      `Final Score: ${this.score}`, 
+      (this.ctx.canvas.width / 2), 
+      450, 
+      170, 
+      80
       )
-
-      this.ctx.font = "bolder 30px sans-serif"
-      this.ctx.textAlign = "center"
-      this.ctx.fillStyle = "#FFA7E4"
-      this.ctx.fillText(
-        `Final Score: ${this.score}`, 
+    this.ctx.fillStyle = "#5BE1E6"
+    this.ctx.fillText(
+        `Level: ${this.level}`, 
         (this.ctx.canvas.width / 2), 
-        450, 
+        480, 
         170, 
         80
-        )
-      this.ctx.fillStyle = "#5BE1E6"
-      this.ctx.fillText(
-          `Level: ${this.level}`, 
-          (this.ctx.canvas.width / 2), 
-          480, 
-          170, 
-          80
-          )    
+        ) 
+  }
+
+  onKeyDown(key) {
+    switch(key) {
+      case ENTER:
+        window.location.reload()
+      break
+    }
   }
 }

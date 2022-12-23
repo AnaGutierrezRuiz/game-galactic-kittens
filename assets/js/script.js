@@ -18,4 +18,13 @@ musicButton.onclick = function() {
     game.levelUpSound.volume = 1
     musicButton.classList.add("on")
   }
+
+// const playAgainButton = document.getElementById("play-again")
+// playAgainButton.onclick = function() {
+//   if (playAgainButton.classList.contains("hidden")) {
+//     console.log("cool")
+//       playAgainButton.classList.remove("hidden")
+//     }
+//   game.start()
+//   }
 }

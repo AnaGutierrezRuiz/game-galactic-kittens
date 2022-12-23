@@ -1,12 +1,12 @@
 class Kitten {
-  constructor(ctx) {
+  constructor(ctx, vy) {
     this.ctx = ctx
     this.w = 50
     this.x = Math.floor(Math.random() * (canvas.width - this.w))
     this.y = -150
     this.h= 50
     this.vx= 0
-    this.vy = 2
+    this.vy = vy
     
     this.img = new Image()
     this.img.src = "assets/resources/images/kittensedited.png"
@@ -45,14 +45,10 @@ class Kitten {
       )
     }
 
-    increaseKittensSpeed() {
-      this.vy++
-    }
-
     isVisible() {
       return (
         this.y < this.ctx.canvas.height &&
-        this.y > 0 - (this.ctx.canvas.height + 100)
+        this.y > 0 - (this.ctx.canvas.height)
       )
     }
   }

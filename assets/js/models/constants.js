@@ -1,3 +1,4 @@
+const ENTER = 13
 const SPACE = 32
 const LEFT = 37
 const UP = 38
