@@ -24,7 +24,7 @@ class Game {
     this.level = 1
 
     this.gameOverImg = new Image
-    this.gameOverImg.src = "assets/resources/images/game-over-vertical.png"
+    this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
   }
 
   start() {
@@ -204,7 +204,7 @@ class Game {
     this.ctx.fillText(
       `Final Score: ${this.score}`, 
       (this.ctx.canvas.width / 2), 
-      450, 
+      440, 
       170, 
       80
       )
@@ -212,7 +212,7 @@ class Game {
     this.ctx.fillText(
         `Level: ${this.level}`, 
         (this.ctx.canvas.width / 2), 
-        480, 
+        470, 
         170, 
         80
         ) 
