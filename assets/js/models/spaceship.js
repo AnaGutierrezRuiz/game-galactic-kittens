@@ -10,6 +10,8 @@ class Spaceship {
     
     this.img = new Image()
     this.img.src = "assets/resources/images/spaceship1.png"
+    this.img.frames = 4
+    this.img.frameIndex = 0
 
     this.bullets = []
   }

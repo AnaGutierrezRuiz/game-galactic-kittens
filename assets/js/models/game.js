@@ -8,10 +8,13 @@ class Game {
     this.life = new Life(ctx)
     this.kittens = []
 
+    this.gameIntroImg = new Image
+    this.gameIntroImg.src = "assets/resources/images/game-intro-vertical.png"
+
     this.music = new Audio("assets/resources/sounds/game-music1.mp3")
     this.music.volume = 0.5
-    
-    this.meowSound = new Audio("assets/resources/sounds/meow.mp3") 
+
+    this.meowSound = new Audio("assets/resources/sounds/meow.mp3")
     this.meowSound.volume = 0.5
 
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav")
@@ -19,7 +22,7 @@ class Game {
 
     this.gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
     this.gameOverSound.volume = 0.2
-    
+
     this.score = 0
     this.level = 1
 
@@ -27,10 +30,21 @@ class Game {
     this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
   }
 
+  gameIntro() {
+    console.log("hola?")    
+    const introImg = document.getElementById("game-intro")
+    console.log(introImg)
+    introImg.classList.add("hidden")
+    const gameCanvas = document.getElementById("game")
+    console.log(gameCanvas)
+    gameCanvas.classList.remove("hidden")
+    this.start()
+  
+  }
+
   start() {
     this.interval = setInterval(() => {
       this.clear()
-      this.initListeners()
       this.music.play()
       this.draw()
       this.checkShipCollisions()
@@ -63,7 +77,7 @@ class Game {
       0,
       0,
     this.ctx.canvas.width,
-    this.ctx.canvas.height 
+    this.ctx.canvas.height
     )
   }
 
@@ -105,7 +119,7 @@ class Game {
   }
 
   loseLife() {
-    
+
     this.kittens.forEach(kitten => {
       console.log(kitten.isVisible())
       if (!kitten.isVisible()) {
@@ -113,7 +127,7 @@ class Game {
         let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
         if (musicButton.classList.contains("on")) {
           lifeDownSound.volume = 0.3
-          lifeDownSound.play() 
+          lifeDownSound.play()
       }
       }
     })
@@ -133,7 +147,7 @@ class Game {
   clearBullets() {
     this.spaceship.bullets = this.spaceship.bullets.filter(bullet => bullet.isVisible())
   }
-  
+
   bulletCollidesWithKitten(kitten, bullet) {
     const kittenIndex = this.kittens.indexOf(kitten)
     this.kittens.splice(kittenIndex, 1)
@@ -157,7 +171,7 @@ class Game {
   }
 
   addKitten() {
-    if (this.tick % 100) return 
+    if (this.tick % 100) return
     //for each kitten its velocity is increased depending on the level the player is at
     //const vy = 2 + this.level * 0.3
     const vy = 2
@@ -183,7 +197,7 @@ class Game {
 
   gameOver() {
     this.stop()
-    
+
     if (musicButton.classList.contains("on")) {
       this.gameOverSound.play()
       console.log("playing game over sound")
@@ -191,7 +205,7 @@ class Game {
     }
 
     this.ctx.drawImage(
-      this.gameOverImg, 
+      this.gameOverImg,
       0,
       0,
       this.ctx.canvas.width,
@@ -202,26 +216,29 @@ class Game {
     this.ctx.textAlign = "center"
     this.ctx.fillStyle = "#FFA7E4"
     this.ctx.fillText(
-      `Final Score: ${this.score}`, 
-      (this.ctx.canvas.width / 2), 
-      440, 
-      170, 
+      `Final Score: ${this.score}`,
+      (this.ctx.canvas.width / 2),
+      440,
+      170,
       80
       )
     this.ctx.fillStyle = "#5BE1E6"
     this.ctx.fillText(
-        `Level: ${this.level}`, 
-        (this.ctx.canvas.width / 2), 
-        470, 
-        170, 
+        `Level: ${this.level}`,
+        (this.ctx.canvas.width / 2),
+        470,
+        170,
         80
-        ) 
+        )
   }
 
   onKeyDown(key) {
     switch(key) {
       case ENTER:
         window.location.reload()
+      break
+      case TAB:
+        this.gameIntro()
       break
     }
   }

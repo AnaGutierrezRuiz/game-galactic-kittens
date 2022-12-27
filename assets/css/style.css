@@ -16,17 +16,14 @@ html, body {
   padding: 20px; */
   display: flex;
   align-items: flex-end;
+  position: relative;
 }
 
 
-canvas {
+canvas, .game-intro {
   border: 3px solid white;
   border-radius: 15px;
   margin: 20px;
-}
-
-.game-intro {
-  border-radius: 10%;
 }
 
 .galactic-kittens {
@@ -48,4 +45,8 @@ canvas {
 
 .on {
   background-image: url("/assets/resources/images/music-on.png");
+}
+
+.hidden {
+  display: none;
 }

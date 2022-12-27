@@ -2,7 +2,32 @@ const canvas = document.getElementById("game")
 const ctx = canvas.getContext("2d")
 
 const game = new Game(ctx)
-game.start();
+game.initListeners()
+
+
+const ship1Button = document.getElementById("ship-button1")
+const ship2Button = document.getElementById("ship-button2")
+const ship3Button = document.getElementById("ship-button3")
+const ship4Button = document.getElementById("ship-button4")
+
+ship1Button.onclick = () => {
+  console.log(ship1)
+  game.spaceship.img.frameIndex = 0
+}
+ship2Button.onclick = () => {
+  console.log(ship2)
+  game.spaceship.img.frameIndex = 1
+}
+ship3Button.onclick = () => {
+  game.spaceship.img.frameIndex = 2
+}
+ship4Button.onclick = () => {
+  game.spaceship.img.frameIndex = 3
+}
+
+
+
+
 
 const musicButton = document.getElementById("music-on-off")
 
@@ -18,13 +43,4 @@ musicButton.onclick = function() {
     game.levelUpSound.volume = 1
     musicButton.classList.add("on")
   }
-
-// const playAgainButton = document.getElementById("play-again")
-// playAgainButton.onclick = function() {
-//   if (playAgainButton.classList.contains("hidden")) {
-//     console.log("cool")
-//       playAgainButton.classList.remove("hidden")
-//     }
-//   game.start()
-//   }
 }
