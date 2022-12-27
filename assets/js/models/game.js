@@ -30,13 +30,18 @@ class Game {
     this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
   }
 
-  gameIntro() {
-    console.log("hola?")    
+  gameIntro() {  
     const introImg = document.getElementById("game-intro")
-    console.log(introImg)
     introImg.classList.add("hidden")
+    const spaceshipMenu1 = document.getElementById("ship-button1")
+    spaceshipMenu1.classList.add("hidden")
+    const spaceshipMenu2 = document.getElementById("ship-button2")
+    spaceshipMenu2.classList.add("hidden")
+    const spaceshipMenu3 = document.getElementById("ship-button3")
+    spaceshipMenu3.classList.add("hidden")
+    const spaceshipMenu4 = document.getElementById("ship-button4")
+    spaceshipMenu4.classList.add("hidden")
     const gameCanvas = document.getElementById("game")
-    console.log(gameCanvas)
     gameCanvas.classList.remove("hidden")
     this.start()
   

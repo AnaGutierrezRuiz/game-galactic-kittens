@@ -9,9 +9,7 @@ class Spaceship {
     this.vy = 0
     
     this.img = new Image()
-    this.img.src = "assets/resources/images/spaceship1.png"
-    this.img.frames = 4
-    this.img.frameIndex = 0
+    this.img.src = "assets/resources/images/ship1.png"
 
     this.bullets = []
   }
@@ -21,8 +19,8 @@ class Spaceship {
       this.img,
       this.x,
       this.y,
-      this.img.width / 7,
-      this.img.height / 7
+      this.img.width/4,
+      this.img.height/4
     )
     this.bullets.forEach(bullet => bullet.draw())
   }

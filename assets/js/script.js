@@ -11,18 +11,59 @@ const ship3Button = document.getElementById("ship-button3")
 const ship4Button = document.getElementById("ship-button4")
 
 ship1Button.onclick = () => {
-  console.log(ship1)
-  game.spaceship.img.frameIndex = 0
+  if (!ship1Button.classList.contains("selected-btn")) {
+    ship1Button.classList.add("selected-btn")
+  }
+  if (ship2Button.classList.contains("selected-btn")) {
+    ship2Button.classList.remove("selected-btn")
+  } else if (ship3Button.classList.contains("selected-btn")) {
+    ship3Button.classList.remove("selected-btn")
+  } else if (ship4Button.classList.contains("selected-btn")) {
+    ship4Button.classList.remove("selected-btn")
+  }
+  game.spaceship.img.src = "assets/resources/images/ship1.png"
 }
+
 ship2Button.onclick = () => {
-  console.log(ship2)
-  game.spaceship.img.frameIndex = 1
+  if (!ship2Button.classList.contains("selected-btn")) {
+    ship2Button.classList.add("selected-btn")
+  }
+  if (ship1Button.classList.contains("selected-btn")) {
+    ship1Button.classList.remove("selected-btn")
+  } else if (ship3Button.classList.contains("selected-btn")) {
+    ship3Button.classList.remove("selected-btn")
+  } else if (ship4Button.classList.contains("selected-btn")) {
+    ship4Button.classList.remove("selected-btn")
+  }
+  game.spaceship.img.src = "assets/resources/images/ship2.png"
 }
+
 ship3Button.onclick = () => {
-  game.spaceship.img.frameIndex = 2
+  if (!ship3Button.classList.contains("selected-btn")) {
+    ship3Button.classList.add("selected-btn")
+  }
+  if (ship1Button.classList.contains("selected-btn")) {
+    ship1Button.classList.remove("selected-btn")
+  } else if (ship2Button.classList.contains("selected-btn")) {
+    ship2Button.classList.remove("selected-btn")
+  } else if (ship4Button.classList.contains("selected-btn")) {
+    ship4Button.classList.remove("selected-btn")
+  }
+  game.spaceship.img.src = "assets/resources/images/ship3.png"
 }
+
 ship4Button.onclick = () => {
-  game.spaceship.img.frameIndex = 3
+  if (!ship4Button.classList.contains("selected-btn")) {
+    ship4Button.classList.add("selected-btn")
+  }
+  if (ship1Button.classList.contains("selected-btn")) {
+    ship1Button.classList.remove("selected-btn")
+  } else if (ship2Button.classList.contains("selected-btn")) {
+    ship2Button.classList.remove("selected-btn")
+  } else if (ship3Button.classList.contains("selected-btn")) {
+    ship3Button.classList.remove("selected-btn")
+  }
+  game.spaceship.img.src = "assets/resources/images/ship4.png"
 }
 
 
