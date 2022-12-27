@@ -112,7 +112,7 @@ class Game {
         this.life.img.frameIndex++
         let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
         if (musicButton.classList.contains("on")) {
-          lifeDownSound.volume = 0.1
+          lifeDownSound.volume = 0.3
           lifeDownSound.play() 
       }
       }
