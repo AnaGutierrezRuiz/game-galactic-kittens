@@ -48,25 +48,25 @@ canvas, #game-intro {
 }
 #ship-button1 {
   position: absolute;
-  top: 330px;
+  top: 380px;
   left: 60px;
 }
 
 #ship-button2 {
   position: absolute;
-  top: 330px;
+  top: 380px;
   left: 150px;
 }
 
 #ship-button3 {
   position: absolute;
-  top: 330px;
+  top: 380px;
   left: 240px;
 }
 
 #ship-button4 {
   position: absolute;
-  top: 330px;
+  top: 380px;
   left: 330px;
 }
 

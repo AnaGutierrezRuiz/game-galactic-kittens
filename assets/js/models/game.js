@@ -28,9 +28,11 @@ class Game {
 
     this.gameOverImg = new Image
     this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
+
+    this.isIntroMenu = true;
   }
 
-  gameIntro() {  
+  gameIntro() {
     const introImg = document.getElementById("game-intro")
     introImg.classList.add("hidden")
     const spaceshipMenu1 = document.getElementById("ship-button1")
@@ -44,6 +46,7 @@ class Game {
     const gameCanvas = document.getElementById("game")
     gameCanvas.classList.remove("hidden")
     this.start()
+    this.isIntroMenu = false
   
   }
 
@@ -126,7 +129,6 @@ class Game {
   loseLife() {
 
     this.kittens.forEach(kitten => {
-      console.log(kitten.isVisible())
       if (!kitten.isVisible()) {
         this.life.img.frameIndex++
         let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
@@ -180,7 +182,6 @@ class Game {
     //for each kitten its velocity is increased depending on the level the player is at
     //const vy = 2 + this.level * 0.3
     const vy = 2
-    console.log(vy)
     this.kittens.push(new Kitten(this.ctx, vy))
   }
 
@@ -205,7 +206,6 @@ class Game {
 
     if (musicButton.classList.contains("on")) {
       this.gameOverSound.play()
-      console.log("playing game over sound")
       this.music.pause()
     }
 
@@ -240,10 +240,11 @@ class Game {
   onKeyDown(key) {
     switch(key) {
       case ENTER:
-        window.location.reload()
-      break
-      case TAB:
-        this.gameIntro()
+        if(this.isIntroMenu) {
+          this.gameIntro()
+        } else {
+          window.location.reload()
+        }
       break
     }
   }
