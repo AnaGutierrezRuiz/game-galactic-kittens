@@ -66,10 +66,6 @@ ship4Button.onclick = () => {
   game.spaceship.img.src = "assets/resources/images/ship4.png"
 }
 
-
-
-
-
 const musicButton = document.getElementById("music-on-off")
 
 musicButton.onclick = function() {
@@ -77,11 +73,15 @@ musicButton.onclick = function() {
     game.music.volume = 0
     game.meowSound.volume = 0
     game.levelUpSound.volume = 0
+    game.heartUpSound1.volume = 0
+    game.heartUpSound2.volume = 0
     musicButton.classList.remove("on")
   } else {
     game.music.volume = 0.5
     game.meowSound.volume = 0.5
     game.levelUpSound.volume = 1
+    game.heartUpSound1.volume = 0.5
+    game.heartUpSound2.volume = 0.2
     musicButton.classList.add("on")
   }
 }

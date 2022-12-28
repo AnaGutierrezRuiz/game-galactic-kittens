@@ -8,8 +8,8 @@ class Bullet {
     this.vx = 0
     this.vy = -3
 
-  this.img = new Image()
-  this.img.src = "assets/resources/images/bullet1.png"
+    this.img = new Image()
+    this.img.src = "assets/resources/images/bullet1.png"
   }
 
   draw() {

@@ -27,7 +27,6 @@ class Kitten {
         this.y,
         this.w,
         this.h
-
       )
     }
   

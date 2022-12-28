@@ -12,7 +12,6 @@ class Asteroid {
     this.img.src = "assets/resources/images/asteroids.png"
     this.img.frames = 9
     this.img.frameIndex = Math.floor(Math.random() * 9)
-    this.tick = 0
   }
 
   draw() {

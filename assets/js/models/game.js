@@ -8,6 +8,7 @@ class Game {
     this.life = new Life(ctx)
     this.kittens = []
     this.asteroids = []
+    this.hearts = []
 
     this.gameIntroImg = new Image
     this.gameIntroImg.src = "assets/resources/images/game-intro-vertical.png"
@@ -20,6 +21,12 @@ class Game {
 
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav")
     this.levelUpSound.volume = 1
+
+    this.heartUpSound1 = new Audio("assets/resources/sounds/1up-option1.wav")
+    this.heartUpSound1.volume = 0.5
+
+    this.heartUpSound2 = new Audio("assets/resources/sounds/1up-3.wav")
+    this.heartUpSound2.volume = 0.2
 
     this.gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
     this.gameOverSound.volume = 0.2
@@ -61,9 +68,11 @@ class Game {
       this.move()
       this.addKitten()
       this.addAsteroid()
+      this.addHeart()
       this.clearKittens()
       this.clearAsteroids()
       this.clearBullets()
+      this.clearHearts()
       this.loseLife()
 
       if (this.tick++ > 10000) {
@@ -98,6 +107,8 @@ class Game {
     this.life.draw()
     this.kittens.forEach(kitten => kitten.draw())
     this.asteroids.forEach(asteroid => asteroid.draw())
+    this.hearts.forEach(heart => heart.draw())
+    this.hearts.forEach(heart => heart.animate())
     this.drawScore()
     this.drawLevel()
   }
@@ -107,6 +118,7 @@ class Game {
   this.spaceship.move()
   this.kittens.forEach(kitten => kitten.move())
   this.asteroids.forEach(asteroid => asteroid.move())
+  this.hearts.forEach(heart => heart.move())
 
   }
 
@@ -129,6 +141,15 @@ class Game {
       this.life.img.frameIndex = 3
       this.gameOver()
     }
+    const collisionsWithHearts = this.hearts.some(heart => {
+      const colX3 = ((this.spaceship.x + this.spaceship.w) >= heart.x) && (this.spaceship.x <= (heart.x + heart.w))
+      const colY3 = (this.spaceship.y <= (heart.y + heart.h)) && ((this.spaceship.y + this.spaceship.h) >= heart.y)
+      return colX3 && colY3
+    })
+    if (collisionsWithHearts && this.life.img.frameIndex > 0 && this.life.img.frameIndex < 3) {
+      this.life.img.frameIndex -= 1      
+    }
+
 
   }
 //why cant i check both kittens and bullets arrays from here ( i ended up creating a method withing the kitten class)
@@ -137,6 +158,14 @@ class Game {
       this.kittens.forEach(kitten => {
         if (kitten.collidesWith(bullet)) {
           this.bulletCollidesWithKitten(kitten, bullet)
+        }
+      })
+    })
+
+    this.spaceship.bullets.forEach(bullet => {
+      this.hearts.forEach(heart => {
+        if (heart.collidesWith(bullet)) {
+          this.bulletCollidesWithHeart(heart, bullet)
         }
       })
     })
@@ -177,6 +206,12 @@ class Game {
     }, 10)
   }
 
+  clearHearts() {
+    setTimeout(() => {
+      this.hearts = this.hearts.filter(heart => heart.isVisible())
+    }, 10)
+  }
+
   bulletCollidesWithKitten(kitten, bullet) {
     const kittenIndex = this.kittens.indexOf(kitten)
     this.kittens.splice(kittenIndex, 1)
@@ -193,6 +228,21 @@ class Game {
       this.level++
     }
 
+  }
+
+  bulletCollidesWithHeart(heart, bullet) {
+    const heartIndex = this.hearts.indexOf(heart)
+    this.hearts.splice(heartIndex, 1)
+
+    const bulletIndex = this.spaceship.bullets.indexOf(bullet)
+    this.spaceship.bullets.splice(bulletIndex, 1)
+
+    if (this.life.img.frameIndex > 0 && this.life.img.frameIndex < 3) {
+      this.heartUpSound1.play()
+      this.life.img.frameIndex -= 1      
+    } else if (this.life.img.frameIndex === 0) {
+      this.heartUpSound2.play()
+    }
   }
 
   increaseScore() {
@@ -213,6 +263,13 @@ class Game {
       this.asteroids.push(new Asteroid(this.ctx))
     }, 150)
     
+  }
+
+  addHeart() {
+    setTimeout(() => {
+      if (this.tick % 125) return
+      this.hearts.push(new Heart(this.ctx))
+    }, 125)
   }
 
   drawScore() {
