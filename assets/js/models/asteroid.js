@@ -6,12 +6,12 @@ class Asteroid {
     this.y = -150
     this.h = 50
     this.vx = 0
-    this.vy = 2
+    this.vy = 4
 
     this.img = new Image()
     this.img.src = "assets/resources/images/asteroids.png"
-    this.img.frames = 8
-    this.img.frameIndex = Math.floor(Math.random() * 8)
+    this.img.frames = 9
+    this.img.frameIndex = Math.floor(Math.random() * 9)
     this.tick = 0
   }
 
@@ -34,6 +34,16 @@ class Asteroid {
       this.x += this.vx
       this.y += this.vy
     }
+
+    collidesWith(bullet) {
+      return (
+        (bullet.x + bullet.w) >= this.x &&
+        bullet.x <= (this.x + this.w) &&
+        bullet.y <= (this.y + this.h) &&
+        (bullet.y + bullet.h) >= this.y
+      )
+    }
+
 
     isVisible() {
       return (

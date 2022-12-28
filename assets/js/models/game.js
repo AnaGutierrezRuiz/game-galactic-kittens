@@ -60,7 +60,9 @@ class Game {
       this.checkBulletsCollisions()
       this.move()
       this.addKitten()
+      this.addAsteroid()
       this.clearKittens()
+      this.clearAsteroids()
       this.clearBullets()
       this.loseLife()
 
@@ -133,7 +135,7 @@ class Game {
   checkBulletsCollisions() {
     this.spaceship.bullets.forEach(bullet => {
       this.kittens.forEach(kitten => {
-        if (kitten.collidesWith(bullet)){
+        if (kitten.collidesWith(bullet)) {
           this.bulletCollidesWithKitten(kitten, bullet)
         }
       })
@@ -169,6 +171,12 @@ class Game {
     this.spaceship.bullets = this.spaceship.bullets.filter(bullet => bullet.isVisible())
   }
 
+  clearAsteroids() {
+    setTimeout(() => {
+      this.asteroids = this.asteroids.filter(asteroid => asteroid.isVisible())
+    }, 10)
+  }
+
   bulletCollidesWithKitten(kitten, bullet) {
     const kittenIndex = this.kittens.indexOf(kitten)
     this.kittens.splice(kittenIndex, 1)
@@ -187,10 +195,6 @@ class Game {
 
   }
 
-  bulletCollidesWithAsteroid(asteroid, bullet) {
-    const asteroidIndex = this.asteroids.indexOf(asteroid)
-  }
-
   increaseScore() {
     this.score++
   }
@@ -201,6 +205,14 @@ class Game {
     //const vy = 2 + this.level * 0.3
     const vy = 2
     this.kittens.push(new Kitten(this.ctx, vy))
+  }
+
+  addAsteroid() {
+    setTimeout (() => {
+      if (this.tick % 350) return 
+      this.asteroids.push(new Asteroid(this.ctx))
+    }, 150)
+    
   }
 
   drawScore() {
