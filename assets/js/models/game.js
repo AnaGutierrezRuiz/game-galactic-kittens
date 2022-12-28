@@ -7,6 +7,7 @@ class Game {
     this.spaceship = new Spaceship(ctx)
     this.life = new Life(ctx)
     this.kittens = []
+    this.asteroids = []
 
     this.gameIntroImg = new Image
     this.gameIntroImg.src = "assets/resources/images/game-intro-vertical.png"
@@ -94,6 +95,7 @@ class Game {
     this.spaceship.draw()
     this.life.draw()
     this.kittens.forEach(kitten => kitten.draw())
+    this.asteroids.forEach(asteroid => asteroid.draw())
     this.drawScore()
     this.drawLevel()
   }
@@ -102,18 +104,30 @@ class Game {
   this.background.move()
   this.spaceship.move()
   this.kittens.forEach(kitten => kitten.move())
+  this.asteroids.forEach(asteroid => asteroid.move())
+
   }
 
   checkShipCollisions() {
-      const collisions = this.kittens.some(kitten => {
-        const colX = ((this.spaceship.x + this.spaceship.w) >= kitten.x) && (this.spaceship.x <= (kitten.x + kitten.w))
-        const colY = (this.spaceship.y <= (kitten.y + kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= kitten.y)
-        return colX && colY
-       })
-    if (collisions) {
+    const collisionsWithKittens = this.kittens.some(kitten => {
+      const colX1 = ((this.spaceship.x + this.spaceship.w) >= kitten.x) && (this.spaceship.x <= (kitten.x + kitten.w))
+      const colY1 = (this.spaceship.y <= (kitten.y + kitten.h)) && ((this.spaceship.y + this.spaceship.h) >= kitten.y)
+      return colX1 && colY1
+    })
+    if (collisionsWithKittens) {
       this.life.img.frameIndex = 3
       this.gameOver()
     }
+    const collisionsWithAsteroids = this.asteroids.some(asteroid => {
+      const colX2 = ((this.spaceship.x + this.spaceship.w) >= asteroid.x) && (this.spaceship.x <= (asteroid.x + asteroid.w))
+      const colY2 = (this.spaceship.y <= (asteroid.y + asteroid.h)) && ((this.spaceship.y + this.spaceship.h) >= asteroid.y)
+      return colX2 && colY2
+    })
+    if (collisionsWithAsteroids) {
+      this.life.img.frameIndex = 3
+      this.gameOver()
+    }
+
   }
 //why cant i check both kittens and bullets arrays from here ( i ended up creating a method withing the kitten class)
   checkBulletsCollisions() {
@@ -171,6 +185,10 @@ class Game {
       this.level++
     }
 
+  }
+
+  bulletCollidesWithAsteroid(asteroid, bullet) {
+    const asteroidIndex = this.asteroids.indexOf(asteroid)
   }
 
   increaseScore() {
