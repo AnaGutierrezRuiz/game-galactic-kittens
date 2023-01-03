@@ -141,21 +141,8 @@ class Game {
       this.life.img.frameIndex = 3
       this.gameOver()
     }
-    // const collisionsWithHearts = this.hearts.some(heart => {
-    //   const colX3 = ((this.spaceship.x + this.spaceship.w) >= heart.x) && (this.spaceship.x <= (heart.x + heart.w))
-    //   const colY3 = (this.spaceship.y <= (heart.y + heart.h)) && ((this.spaceship.y + this.spaceship.h) >= heart.y)
-    //   return colX3 && colY3
-    // })
-    // if (collisionsWithHearts) {
-    //   const heartIndex = this.hearts.indexOf(heart)
-    //   this.hearts.splice(heartIndex, 1)
-    // }
-    // if (collisionsWithHearts && this.life.img.frameIndex > 0 && this.life.img.frameIndex < 3) {
-    //   this.life.img.frameIndex -= 1      
-    // }
   }
 
-//why cant i check both kittens and bullets arrays from here ( i ended up creating a method withing the kitten class)
   checkBulletsCollisions() {
     this.spaceship.bullets.forEach(bullet => {
       this.kittens.forEach(kitten => {
@@ -175,7 +162,6 @@ class Game {
   }
 
   loseLife() {
-
     this.kittens.forEach(kitten => {
       if (!kitten.isVisible()) {
         this.life.img.frameIndex++

@@ -68,6 +68,7 @@ ship4Button.onclick = () => {
 
 const musicButton = document.getElementById("music-on-off")
 
+
 musicButton.onclick = function() {
   if (musicButton.classList.contains("on")) {
     game.music.volume = 0
@@ -85,3 +86,28 @@ musicButton.onclick = function() {
     musicButton.classList.add("on")
   }
 }
+  
+  
+  
+  // //score list
+  // let storedScores = JSON.parse(localStorage.getItem("scores-list"))
+  
+  // const scoreButton = document.getElementById("score-button")
+
+  // scoreButton.onclick = () => {
+  //   storedScores.push({"sprite":game.spaceship.img.src, "name": inputName.value, "score": game.score, "level": game.level})
+  //   window.localStorage.clear()
+  //   window.localStorage.setItem("scores-list". JSON.stringify(storedScores))
+  
+  //   storedScores.forEach(element => {
+  //     scoresTable.innerHTML += `
+  //     <tr>
+  //       <td><img src = "${element.sprite}"></td>
+  //       <td>${element.name}</td>
+  //       <td>${element.score}</td>
+  //       <td>${element.level}</td>
+  //     </tr>
+  //     `
+  //   })
+  
+  // }

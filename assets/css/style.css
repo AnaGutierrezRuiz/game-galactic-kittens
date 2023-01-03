@@ -12,8 +12,6 @@ html, body {
 }
 
 .container {
-  /* text-align: center;
-  padding: 20px; */
   display: flex;
   align-items: flex-end;
   position: relative;

@@ -57,15 +57,6 @@ class Heart {
     )
   }
 
-  // collidesWith(spaceship) {
-  //   return (
-  //     (spaceship.x + spaceship.w) >= this.x && 
-  //     spaceship.x <= (this.x + this.w) &&
-  //     spaceship.y <= (this.y + this.h) && 
-  //     (spaceship.y + spaceship.h) >= this.y
-  //   )
-  // }
-
   isVisible() {
     return (
       this.y < this.ctx.canvas.height &&
