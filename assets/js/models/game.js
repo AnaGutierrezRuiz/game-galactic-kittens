@@ -254,9 +254,8 @@ class Game {
 
   addKitten() {
     if (this.tick % 100) return
-    //for each kitten its velocity is increased depending on the level the player is at
-    //const vy = 2 + this.level * 0.3
-    const vy = 2
+    let vy = this.level + 0.3
+    console.log(vy)
     this.kittens.push(new Kitten(this.ctx, vy))
   }
 
@@ -272,7 +271,7 @@ class Game {
     setTimeout(() => {
       if (this.tick % 825) return
       this.hearts.push(new Heart(this.ctx))
-    }, 825)
+    }, 1025)
   }
 
   drawScore() {
