@@ -37,7 +37,7 @@ class Game {
     this.gameOverImg = new Image
     this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
 
-    this.isIntroMenu = true;
+    this.isIntroMenu = true
   }
 
   gameIntro() {
@@ -278,6 +278,7 @@ class Game {
 
   gameOver() {
     this.stop()
+    this.showScoresList()
 
     if (musicButton.classList.contains("on")) {
       this.gameOverSound.play()
@@ -323,4 +324,50 @@ class Game {
       break
     }
   }
+
+  showScoresList() {
+    const scoresForm = document.getElementById("scores-form")
+    const scoresList = document.getElementById("scores-list")
+    scoresForm.classList.remove("hidden")
+    scoresList.classList.remove("hidden")
+  
+    scoresForm.addEventListener('submit', (event) => {
+      event.preventDefault()
+      const playerNameInput = document.getElementById("player-name-input")
+      const playerName = playerNameInput.value
+      localStorage.setItem('playerName', playerName)
+      localStorage.setItem('playerScore', this.score)
+      localStorage.setItem('playerLevel', this.level)
+      this.addPlayerDataToLocalStorage()
+      this.showPlayerDataFromLocalStorage()
+      scoresForm.style.display = "none"
+    })
+  }
+
+  addPlayerDataToLocalStorage() {
+    const playerName = localStorage.getItem('playerName')
+    const playerScore = localStorage.getItem('playerScore')
+    const playerLevel = localStorage.getItem('playerLevel')
+    const players = JSON.parse(localStorage.getItem('players')) || []
+    players.push({ playerName, playerScore, playerLevel })
+    localStorage.setItem('players', JSON.stringify(players))
+  }
+
+  showPlayerDataFromLocalStorage() {
+    const scoreList = document.getElementById("scores-list")
+    scoreList.innerHTML = ""
+    
+    const players = JSON.parse(localStorage.getItem('players')) || []
+    const lastFivePlayers = players.slice(-5)
+    lastFivePlayers.forEach(player => {
+      const newRow = scoreList.insertRow()
+      newRow.insertCell().innerHTML = player.playerName
+      newRow.insertCell().innerHTML = player.playerScore
+      newRow.insertCell().innerHTML = player.playerLevel
+    })
+    
+  }
 }
+
+
+
