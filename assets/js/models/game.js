@@ -14,28 +14,28 @@ class Game {
     this.gameIntroImg.src = "assets/resources/images/game-intro-vertical.png"
 
     this.music = new Audio("assets/resources/sounds/game-music1.mp3")
-    this.music.volume = 0.5
+    this.music.volume = 0.1
 
     this.meowSound = new Audio("assets/resources/sounds/meow.mp3")
-    this.meowSound.volume = 0.5
+    this.meowSound.volume = 0.1
 
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav")
-    this.levelUpSound.volume = 1
+    this.levelUpSound.volume = 0.2
 
     this.heartUpSound1 = new Audio("assets/resources/sounds/1up-option1.wav")
-    this.heartUpSound1.volume = 0.5
+    this.heartUpSound1.volume = 0.1
 
     this.heartUpSound2 = new Audio("assets/resources/sounds/1up-3.wav")
-    this.heartUpSound2.volume = 0.2
+    this.heartUpSound2.volume = 0.1
 
     this.gameOverSound = new Audio("assets/resources/sounds/game-over.wav")
-    this.gameOverSound.volume = 0.2
+    this.gameOverSound.volume = 0.1
 
     this.score = 0
     this.level = 1
 
     this.gameOverImg = new Image
-    this.gameOverImg.src = "assets/resources/images/game-over-vertical2.png"
+    this.gameOverImg.src = "assets/resources/images/game-over-vertical3.png"
 
     this.isIntroMenu = true
   }
@@ -167,7 +167,7 @@ class Game {
         this.life.img.frameIndex++
         let lifeDownSound = new Audio("assets/resources/sounds/life-down.wav")
         if (musicButton.classList.contains("on")) {
-          lifeDownSound.volume = 0.3
+          lifeDownSound.volume = 0.1
           lifeDownSound.play()
       }
       }
@@ -278,7 +278,7 @@ class Game {
 
   gameOver() {
     this.stop()
-    this.showScoresList()
+    this.showScoresButton()
 
     if (musicButton.classList.contains("on")) {
       this.gameOverSound.play()
@@ -293,13 +293,13 @@ class Game {
       this.ctx.canvas.height
     )
 
-    this.ctx.font = "bolder 30px sans-serif"
+    this.ctx.font = "bolder 25px sans-serif"
     this.ctx.textAlign = "center"
     this.ctx.fillStyle = "#FFA7E4"
     this.ctx.fillText(
       `Final Score: ${this.score}`,
       (this.ctx.canvas.width / 2),
-      440,
+      415,
       170,
       80
       )
@@ -307,11 +307,16 @@ class Game {
     this.ctx.fillText(
         `Level: ${this.level}`,
         (this.ctx.canvas.width / 2),
-        470,
+        440,
         170,
         80
         )
   }
+
+  showScoresButton() {
+    const scoresForm = document.getElementById("scores-form")
+    scoresForm.classList.remove("hidden")
+   }
 
   onKeyDown(key) {
     switch(key) {
@@ -324,50 +329,4 @@ class Game {
       break
     }
   }
-
-  showScoresList() {
-    const scoresForm = document.getElementById("scores-form")
-    const scoresList = document.getElementById("scores-list")
-    scoresForm.classList.remove("hidden")
-    scoresList.classList.remove("hidden")
-  
-    scoresForm.addEventListener('submit', (event) => {
-      event.preventDefault()
-      const playerNameInput = document.getElementById("player-name-input")
-      const playerName = playerNameInput.value
-      localStorage.setItem('playerName', playerName)
-      localStorage.setItem('playerScore', this.score)
-      localStorage.setItem('playerLevel', this.level)
-      this.addPlayerDataToLocalStorage()
-      this.showPlayerDataFromLocalStorage()
-      scoresForm.style.display = "none"
-    })
-  }
-
-  addPlayerDataToLocalStorage() {
-    const playerName = localStorage.getItem('playerName')
-    const playerScore = localStorage.getItem('playerScore')
-    const playerLevel = localStorage.getItem('playerLevel')
-    const players = JSON.parse(localStorage.getItem('players')) || []
-    players.push({ playerName, playerScore, playerLevel })
-    localStorage.setItem('players', JSON.stringify(players))
-  }
-
-  showPlayerDataFromLocalStorage() {
-    const scoreList = document.getElementById("scores-list")
-    scoreList.innerHTML = ""
-    
-    const players = JSON.parse(localStorage.getItem('players')) || []
-    const lastFivePlayers = players.slice(-5)
-    lastFivePlayers.forEach(player => {
-      const newRow = scoreList.insertRow()
-      newRow.insertCell().innerHTML = player.playerName
-      newRow.insertCell().innerHTML = player.playerScore
-      newRow.insertCell().innerHTML = player.playerLevel
-    })
-    
-  }
 }
-
-
-

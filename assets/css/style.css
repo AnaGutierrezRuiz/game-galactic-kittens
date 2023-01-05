@@ -97,3 +97,58 @@ canvas, #game-intro {
   color: white;
   font-size: 15px;
 }
+
+#player-name-input {
+  position: absolute;
+  top: 480px;
+  left: 105px;
+  width: 207.5px;
+  box-shadow: 3px 3px #fcfaec;
+  padding: 10px 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  cursor: text;
+  border: none;
+  font: bold 13px sans-serif;
+  color:rgb(239, 160, 232);
+}
+
+#score-button {
+  position: absolute;
+  top: 525px;
+  left: 105px;
+  width: 230px;
+  border-radius: 5px;
+  border-color:rgb(239, 160, 232);
+  font: bolder 13px sans-serif;
+  color: rgba(147, 103, 201, 0.494);
+}
+
+
+
+#scores-list {
+position: absolute;
+top: 23px;
+left: 23px;
+width: 400px;
+height: 50px;
+text-align: center;
+border-collapse: collapse;
+border: 10px solid white;
+border-radius: 10px;
+background-color:white;
+opacity: 40%;
+font: 13px sans-serif;
+}
+
+
+#scores-list th {
+  font-size: 20px;
+  width: 30%;
+  height: 30px;
+  color: #5BE1E6;
+}
+
+#scores-list tr {
+  border: 2px solid #fcfaec;
+}
