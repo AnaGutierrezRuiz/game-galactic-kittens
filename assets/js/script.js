@@ -87,7 +87,13 @@ musicButton.onclick = function() {
   }
 }
 
-const players = JSON.parse(localStorage.getItem('players')) || []
+let players = JSON.parse(localStorage.getItem('players')) || []
+//players = []
+
+if (players.length >= 5) {
+  players.shift()
+}
+
 const scoresForm = document.getElementById("scores-form")
 
 scoresForm.onsubmit = (event) => {
