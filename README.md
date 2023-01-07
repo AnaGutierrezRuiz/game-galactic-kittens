@@ -4,6 +4,6 @@ Galactic Kittens is a browser game where you'll have to save the galaxy by destr
 
 <br>
 
-<a href="#">
+<a href="https://anagutierrezruiz.github.io/game-galactic-kittens/">
     <img src="assets/resources/images/readme-button.png" width="150px">
 </a>
