@@ -39,6 +39,7 @@ class Game {
     this.gameOverImg.src = "assets/resources/images/game-over-vertical3.png"
 
     this.isIntroMenu = true
+    this.isGameOn = false
   }
 
   gameIntro() {
@@ -56,6 +57,7 @@ class Game {
     gameCanvas.classList.remove("hidden")
     this.start()
     this.isIntroMenu = false
+    this.isGameOn = true
   
   }
 
@@ -280,6 +282,7 @@ class Game {
   gameOver() {
     this.stop()
     this.showScoresButton()
+    this.isGameOn = false
 
     if (musicButton.classList.contains("on")) {
       this.gameOverSound.play()

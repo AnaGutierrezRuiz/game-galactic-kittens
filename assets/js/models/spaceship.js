@@ -58,7 +58,7 @@ class Spaceship {
     this.bullets.push(bullet)
     
     //play shooting sound only if sound is on
-    if (musicButton.classList.contains("on")) {
+    if (game.isGameOn && musicButton.classList.contains("on")) {
       const shootSound = new Audio("assets/resources/sounds/shoot.mp3")
       shootSound.volume = 0.1
       shootSound.play()
@@ -75,12 +75,6 @@ class Spaceship {
       case LEFT: 
         this.vx = -3
         break
-      // case UP: 
-      //   this.vy = -3
-      //   break
-      // case DOWN: 
-      //   this.vy = 3
-      //   break
       case SPACE:
         this.shoot()
         break
@@ -93,10 +87,6 @@ class Spaceship {
       case LEFT:
         this.vx = 0
         break
-      // case UP:
-      // case DOWN:
-      //   this.vy = 0
-      //   break
     }
   }
 }

@@ -101,7 +101,7 @@ canvas, #game-intro {
 
 #player-name-input {
   position: absolute;
-  top: 480px;
+  top: 490px;
   left: 105px;
   width: 207.5px;
   box-shadow: 3px 3px #fcfaec;
@@ -116,7 +116,7 @@ canvas, #game-intro {
 
 #score-button {
   position: absolute;
-  top: 525px;
+  top: 532px;
   left: 105px;
   width: 230px;
   border-radius: 5px;
