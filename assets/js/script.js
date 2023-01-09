@@ -90,24 +90,25 @@ musicButton.onclick = function() {
 let players = JSON.parse(localStorage.getItem('players')) || []
 //players = []
 
-if (players.length >= 5) {
-  players.shift()
-}
-
-const scoresForm = document.getElementById("scores-form")
-
-scoresForm.onsubmit = (event) => {
-  event.preventDefault()
-  console.log(event)
-  const playerName = document.getElementById("player-name-input").value
-  const playerScore = game.score
-  const playerLevel = game.level
-  players.push({
-    name: playerName,
-    score: playerScore,
-    level: playerLevel 
-  })
-  localStorage.clear()
+// if (players.length >= 5) {
+  //   players.shift()
+  // }
+  
+  const scoresForm = document.getElementById("scores-form")
+  
+  scoresForm.onsubmit = (event) => {
+    event.preventDefault()
+    console.log(event)
+    const playerName = document.getElementById("player-name-input").value
+    const playerScore = game.score
+    const playerLevel = game.level
+    players.push({
+      name: playerName,
+      score: playerScore,
+      level: playerLevel 
+    })
+    players.sort((a, b) => b.score - a.score).splice(5)
+    localStorage.clear()
   localStorage.setItem("players", JSON.stringify(players))
   const scoresList = document.getElementById("scores-list")
 

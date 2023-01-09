@@ -138,7 +138,7 @@ border-collapse: collapse;
 border: 10px solid white;
 border-radius: 10px;
 background-color:white;
-opacity: 40%;
+opacity: 70%;
 font: 13px sans-serif;
 }
 
@@ -152,4 +152,7 @@ font: 13px sans-serif;
 
 #scores-list tr {
   border: 2px solid #fcfaec;
+  font: bolder 14px sans-serif; 
+  color: rgb(239, 160, 232);
+
 }
