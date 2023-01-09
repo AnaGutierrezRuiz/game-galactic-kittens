@@ -90,10 +90,6 @@ musicButton.onclick = function() {
 let players = JSON.parse(localStorage.getItem('players')) || []
 //players = []
 
-// if (players.length >= 5) {
-  //   players.shift()
-  // }
-  
   const scoresForm = document.getElementById("scores-form")
   
   scoresForm.onsubmit = (event) => {
@@ -103,6 +99,7 @@ let players = JSON.parse(localStorage.getItem('players')) || []
     const playerScore = game.score
     const playerLevel = game.level
     players.push({
+      spaceship: game.spaceship.img.src,
       name: playerName,
       score: playerScore,
       level: playerLevel 
@@ -115,6 +112,7 @@ let players = JSON.parse(localStorage.getItem('players')) || []
   players.forEach(player => {
     scoresList.innerHTML += `
     <tr>
+    <td><img src=${player.spaceship} width="25"></td>
     <td>${player.name}</td>
     <td>${player.score}</td>
     <td>${player.level}</td>

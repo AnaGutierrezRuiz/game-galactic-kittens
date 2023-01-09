@@ -137,6 +137,7 @@ text-align: center;
 border-collapse: collapse;
 border: 10px solid white;
 border-radius: 10px;
+table-layout: fixed;
 background-color:white;
 opacity: 70%;
 font: 13px sans-serif;
