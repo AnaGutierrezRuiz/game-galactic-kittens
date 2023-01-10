@@ -23,11 +23,11 @@ class Game {
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav");
     this.levelUpSound.volume = 0.2;
 
-    //Sound played when the player shoots a heart and gets 1 up (only if their life is not full)
+    // Sound played when the player shoots a heart and gets 1 up (only if their life is not full)
     this.heartUpSound1 = new Audio("assets/resources/sounds/heart-sound-life-up.wav");
     this.heartUpSound1.volume = 0.1;
 
-    //Sound played when the player shoots a heart but they get nothing since their life is already full 
+    // Sound played when the player shoots a heart but they get nothing since their life is already full 
     this.heartUpSound2 = new Audio("assets/resources/sounds/heart-sound-life-still.wav");
     this.heartUpSound2.volume = 0.1;
 
@@ -219,9 +219,9 @@ class Game {
     this.spaceship.bullets.splice(bulletIndex, 1);
 
     this.meowSound.play();
-    //Score is increased with every kitten destroyed
+    // Score is increased with every kitten destroyed
     this.increaseScore();
-    //Level is increased after 10 kittens destroyed
+    // Level is increased after 10 kittens destroyed
     if (this.score % 10 === 0) {
       this.levelUpSound.play();
       this.level++;

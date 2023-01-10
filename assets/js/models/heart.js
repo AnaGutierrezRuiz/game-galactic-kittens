@@ -41,7 +41,7 @@ class Heart {
       this.tick = 0;
       this.img.frameIndex++;
 
-      //The frame index is reverted to 0 once we have gone through all four frames to get a looping animation
+      // The frame index is reverted to 0 once we have gone through all four frames to get a looping animation
       if (this.img.frameIndex > this.img.frames - 1) {
         this.img.frameIndex = 0;
       }
