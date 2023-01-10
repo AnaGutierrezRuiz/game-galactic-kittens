@@ -1,16 +1,16 @@
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   background: rgba(194, 156, 240, 0.494);
+  background-image: url("assets/resources/images/background1.png");
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/resources/images/background4.png");
 }
-
 
 .container {
   display: flex;
@@ -18,8 +18,8 @@ html, body {
   position: relative;
 }
 
-
-canvas, #game-intro {
+canvas,
+#game-intro {
   border: 3px solid white;
   border-radius: 15px;
   margin: 20px;
@@ -29,7 +29,7 @@ canvas, #game-intro {
   width: 600px;
 }
 
-.ship-btn {
+.spaceship-btn {
   width: 50px;
   background-color: white;
   border: 1px solid #fcfaec;
@@ -38,32 +38,33 @@ canvas, #game-intro {
   cursor: pointer;
 }
 
-.ship-btn:hover {
-  background-color: #5BE1E6
+.spaceship-btn:hover {
+  background-color: #5be1e6;
 }
 
 .selected-btn {
-  background-color: rgb(239, 160, 232)
+  background-color: rgb(239, 160, 232);
 }
-#ship-button1 {
+
+.spaceship-btn1 {
   position: absolute;
   top: 380px;
   left: 60px;
 }
 
-#ship-button2 {
+.spaceship-btn2 {
   position: absolute;
   top: 380px;
   left: 150px;
 }
 
-#ship-button3 {
+.spaceship-btn3 {
   position: absolute;
   top: 380px;
   left: 240px;
 }
 
-#ship-button4 {
+.spaceship-btn4 {
   position: absolute;
   top: 380px;
   left: 330px;
@@ -87,73 +88,68 @@ canvas, #game-intro {
   display: none;
 }
 
-.set-ship {
+.set-spaceship {
   width: 100px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.select-ship-text {
+.select-spaceship-text {
   font: arial;
   color: white;
   font-size: 15px;
 }
 
-#player-name-input {
+.player-name-input {
   position: absolute;
   top: 490px;
   left: 105px;
   width: 207.5px;
   box-shadow: 3px 3px #fcfaec;
   padding: 10px 10px;
-  font-family: 'Montserrat', sans-serif;
   text-align: center;
   cursor: text;
   border: none;
   font: bold 13px sans-serif;
-  color:rgb(239, 160, 232);
+  color: rgb(239, 160, 232);
 }
 
-#score-button {
+.score-btn {
   position: absolute;
   top: 532px;
   left: 105px;
   width: 230px;
   border-radius: 5px;
-  border-color:rgb(239, 160, 232);
+  border-color: rgb(239, 160, 232);
   font: bolder 13px sans-serif;
   color: rgba(147, 103, 201, 0.494);
 }
 
-
-
-#scores-list {
-position: absolute;
-top: 23px;
-left: 23px;
-width: 400px;
-height: 50px;
-text-align: center;
-border-collapse: collapse;
-border: 10px solid white;
-border-radius: 10px;
-table-layout: fixed;
-background-color:white;
-opacity: 70%;
-font: 13px sans-serif;
+.scores-list {
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  border-collapse: collapse;
+  border: 10px solid white;
+  border-radius: 10px;
+  table-layout: fixed;
+  background-color: white;
+  opacity: 70%;
+  font: 13px sans-serif;
 }
 
-
-#scores-list th {
-  font-size: 20px;
+.scores-list th {
   width: 30%;
   height: 30px;
-  color: #5BE1E6;
+  font-size: 20px;
+  color: #5be1e6;
 }
 
-#scores-list tr {
+.scores-list tr {
   border: 2px solid #fcfaec;
-  font: bolder 14px sans-serif; 
+  font: bolder 14px sans-serif;
   color: rgb(239, 160, 232);
-
 }

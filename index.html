@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galactic Kittens</title>
-  <link href="style.css" rel="stylesheet" type="text/css"/>
-  <link rel="icon" type="image/x-icon" href="assets/resources/images/spaceship1.png">
-</head>
-<body class="body">
-
-  <img class="galactic-kittens" src="assets/resources/images/galactic-kittens3.png">
-  <div class="container">
-    <img id="game-intro" src="assets/resources/images/game-intro-vertical2.png">
-    <canvas id="game" class="hidden" width="400px" height="600px"></canvas>
-    <div id="set-ship" class="set-ship">
-      <img id="ship-button1" class="ship-btn selected-btn" src="assets/resources/images/ship1.png">
-      <img id="ship-button2" class="ship-btn" src="assets/resources/images/ship2.png">
-      <img id="ship-button3" class="ship-btn" src="assets/resources/images/ship3.png">
-      <img id="ship-button4" class="ship-btn" src="assets/resources/images/ship4.png">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Galactic Kittens</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/x-icon" href="assets/resources/images/spaceship1.png"/>
+  </head>
+  <body class="body">
+    <img class="galactic-kittens" src="assets/resources/images/galactic-kittens.png"/>
+    <div class="container">
+      <img id="game-intro" src="assets/resources/images/game-intro.png"/>
+      <canvas id="game" class="hidden" width="400px" height="600px"></canvas>
+      <div id="set-spaceship" class="set-spaceship">
+        <img id="spaceship-button1" class="spaceship-btn spaceship-btn1 selected-btn" src="assets/resources/images/spaceship1.png"/>
+        <img id="spaceship-button2" class="spaceship-btn spaceship-btn2" src="assets/resources/images/spaceship2.png"/>
+        <img id="spaceship-button3" class="spaceship-btn spaceship-btn3" src="assets/resources/images/spaceship3.png"/>
+        <img id="spaceship-button4" class="spaceship-btn spaceship-btn4" src="assets/resources/images/spaceship4.png"/>
+      </div>
+      <form id="scores-form" class="scores-form hidden">
+        <input type="text" id="player-name-input" class="player-name-input" placeholder="Write your name" required/>
+        <button id="score-button" class="score-btn">ADD TO SCOREBOARD</button>
+      </form>
+      <table id="scores-list" class="scores-list hidden">
+        <tr>
+          <th id="player-spaceship-th">Spaceship</th>
+          <th id="player-name-th">Name</th>
+          <th id="player-score-th">Score</th>
+          <th id="player-level-th">Level</th>
+        </tr>
+      </table>
+      <div id="music-on-off" class="music-on-off on"></div>
     </div>
-    <form id="scores-form" class="hidden">
-      <input type="text" id="player-name-input" placeholder="Write your name" required>
-      <button id="score-button">ADD TO SCOREBOARD</button>
-    </form>
-    <table id="scores-list" class="hidden">
-      <tr>
-        <th id="player-spaceship-th">Player</th>
-        <th id="player-name-th">Name</th>
-        <th id="player-score-th">Score</th>
-        <th id="player-level-th">Level</th>
-      </tr>
-    </table>
-    <div id="music-on-off" class="music-on-off on"></div>
-  </div>
 
-  <script src="assets/js/models/constants.js"></script>
-  <script src="assets/js/models/background.js"></script>
-  <script src="assets/js/models/life.js"></script>
-  <script src ="assets/js/models/bullet.js"></script>
-  <script src="assets/js/models/spaceship.js"></script>
-  <script src="assets/js/models/kitten.js"></script>
-  <script src="assets/js/models/asteroid.js"></script>
-  <script src="assets/js/models/heart.js"></script>
-  <script src="assets/js/models/game.js"></script>
-  <script src="assets/js/script.js"></script>
-
-</body>
+    <script src="assets/js/models/constants.js"></script>
+    <script src="assets/js/models/background.js"></script>
+    <script src="assets/js/models/life.js"></script>
+    <script src="assets/js/models/bullet.js"></script>
+    <script src="assets/js/models/spaceship.js"></script>
+    <script src="assets/js/models/kitten.js"></script>
+    <script src="assets/js/models/asteroid.js"></script>
+    <script src="assets/js/models/heart.js"></script>
+    <script src="assets/js/models/game.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
