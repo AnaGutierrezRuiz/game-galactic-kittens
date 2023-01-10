@@ -8,6 +8,7 @@ class Asteroid {
     this.vx = 0;
     this.vy = 4;
 
+    //Asteroids sprite where each frame is an asteroid so that its frame index can be used to display a random frame each time
     this.img = new Image();
     this.img.src = "assets/resources/images/asteroids.png";
     this.img.frames = 9;

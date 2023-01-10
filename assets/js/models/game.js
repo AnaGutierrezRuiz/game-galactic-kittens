@@ -23,9 +23,11 @@ class Game {
     this.levelUpSound = new Audio("assets/resources/sounds/level-up.wav");
     this.levelUpSound.volume = 0.2;
 
+    //Sound played when the player shoots a heart and gets 1 up (only if their life is not full)
     this.heartUpSound1 = new Audio("assets/resources/sounds/heart-sound-life-up.wav");
     this.heartUpSound1.volume = 0.1;
 
+    //Sound played when the player shoots a heart but they get nothing since their life is already full 
     this.heartUpSound2 = new Audio("assets/resources/sounds/heart-sound-life-still.wav");
     this.heartUpSound2.volume = 0.1;
 
@@ -100,12 +102,12 @@ class Game {
 
   draw() {
     this.background.draw();
-    this.spaceship.draw();
-    this.life.draw();
-    this.kittens.forEach((kitten) => kitten.draw());
-    this.asteroids.forEach((asteroid) => asteroid.draw());
     this.hearts.forEach((heart) => heart.draw());
     this.hearts.forEach((heart) => heart.animate());
+    this.kittens.forEach((kitten) => kitten.draw());
+    this.asteroids.forEach((asteroid) => asteroid.draw());
+    this.spaceship.draw();
+    this.life.draw();
     this.drawScore();
     this.drawLevel();
   }

@@ -9,31 +9,47 @@
     <link rel="icon" type="image/x-icon" href="assets/resources/images/spaceship1.png"/>
   </head>
   <body class="body">
-    <img class="galactic-kittens" src="assets/resources/images/galactic-kittens.png"/>
+
+    <!-- Game title to be displayed at all times -->
+    <img class="galactic-kittens-title" src="assets/resources/images/galactic-kittens-title.png"/>
+   
+   <!-- Container of the game intro at first and then the game itself once the player presses enter -->
     <div class="container">
+      
+      <!-- Image used as game intro menu that already includes the instructions and the "press ENTER to play"-->
       <img id="game-intro" src="assets/resources/images/game-intro.png"/>
+      
       <canvas id="game" class="hidden" width="400px" height="600px"></canvas>
+      
+      <!-- Spaceship selection buttons -->
       <div id="set-spaceship" class="set-spaceship">
         <img id="spaceship-button1" class="spaceship-btn spaceship-btn1 selected-btn" src="assets/resources/images/spaceship1.png"/>
         <img id="spaceship-button2" class="spaceship-btn spaceship-btn2" src="assets/resources/images/spaceship2.png"/>
         <img id="spaceship-button3" class="spaceship-btn spaceship-btn3" src="assets/resources/images/spaceship3.png"/>
         <img id="spaceship-button4" class="spaceship-btn spaceship-btn4" src="assets/resources/images/spaceship4.png"/>
       </div>
+
+      <!-- Form where the player writes their name after playing to include their score to the scoreboard -->
       <form id="scores-form" class="scores-form hidden">
         <input type="text" id="player-name-input" class="player-name-input" placeholder="Write your name" required/>
         <button id="score-button" class="score-btn">ADD TO SCOREBOARD</button>
       </form>
+
+      <!-- Scoreboard which is displayed once the player has written their name and clicked on the button -->
       <table id="scores-list" class="scores-list hidden">
         <tr>
-          <th id="player-spaceship-th">Spaceship</th>
+          <th id="player-spaceship-th">Player</th>
           <th id="player-name-th">Name</th>
           <th id="player-score-th">Score</th>
           <th id="player-level-th">Level</th>
         </tr>
       </table>
+
+      <!-- Sound button -->
       <div id="music-on-off" class="music-on-off on"></div>
     </div>
 
+    <!-- Scripts -->
     <script src="assets/js/models/constants.js"></script>
     <script src="assets/js/models/background.js"></script>
     <script src="assets/js/models/life.js"></script>

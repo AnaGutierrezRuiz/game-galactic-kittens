@@ -8,6 +8,7 @@ class Kitten {
     this.vx = 0;
     this.vy = vy;
 
+    //Kittens sprite where each frame is a different kitten so that its frame index can be used to display a random frame each time
     this.img = new Image();
     this.img.src = "assets/resources/images/kittens.png";
     this.img.frames = 7;
