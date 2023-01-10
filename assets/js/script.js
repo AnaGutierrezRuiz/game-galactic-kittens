@@ -66,7 +66,6 @@ spaceship4Button.onclick = () => {
   game.spaceship.img.src = "assets/resources/images/spaceship4.png";
 };
 
-// Music button
 const musicButton = document.getElementById("music-on-off");
 
 musicButton.onclick = function () {
