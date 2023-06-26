@@ -15,9 +15,10 @@ Technologies used: Canvas, HTML, CSS, JS (ES6), OOP
 
 <img src="assets/resources/images/screenshots/screenshot-start-lg.png" width="450px">
 <img src="assets/resources/images/screenshots/screenshot-start-sm.png" width="450px">
-<img src="assets/resources/images/screenshots/screenshot-game-over-sm.png" width="450px">
 <img src="assets/resources/images/screenshots/screenshot-game1-sm.png" width="450px">
 <img src="assets/resources/images/screenshots/screenshot-game2-sm.png" width="450px">
+<img src="assets/resources/images/screenshots/screenshot-game-over1-sm.png" width="450px">
+<img src="assets/resources/images/screenshots/screenshot-game-over2-sm.png" width="450px">
 
 
 
